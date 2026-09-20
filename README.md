@@ -193,6 +193,7 @@ In Progress
 Completed
 
 ###Installation
+
 1. Clone the Repository
 git clone https://github.com/KaviyaRaji11/smart-waste-management-system.git
 cd smart-waste-management-system
@@ -212,7 +213,8 @@ npm start
 6. Start Frontend
 cd frontend
 npm run dev
-Future Scope
+
+####Future Scope
 IoT-based smart bin monitoring
 Real-time bin fill-level detection
 Advanced route optimization
