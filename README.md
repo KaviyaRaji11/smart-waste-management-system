@@ -131,29 +131,68 @@ This helps reduce unnecessary travel between collection locations.
 - OpenStreetMap / Nominatim for location lookup
 - Nearest Neighbor algorithm
 - Haversine distance calculation
+## 🚀 Live Demo
 
-## System Workflow
+**Live Application:**  
+https://smart-waste-management-system-jazoprur0-kaviya-raji-s-projects.vercel.app
 
-Citizen
+## 🔐 Demo Credentials
+
+Use the following accounts to explore the different role-based features.
+
+| Role | Email | Password |
+|------|-------|----------|
+| Citizen | demo.citizen@swm-demo.com | 12345678 |
+| Staff | demo.staff@swm-demo.com | 12345678 |
+| Admin | admin@smartwaste.com | Admin@12345 |
+
+> These accounts are provided specifically for hackathon demonstration purposes.
+
+## 🧪 Recommended Demo Workflow
+
+### 1. Citizen
+Login as **Citizen** and:
+- Create a waste overflow report
+- Upload a waste image
+- Add location/address details
+- View the submitted report in **My Reports**
+
+### 2. Admin
+Login as **Admin** and:
+- View submitted waste reports
+- Verify reports
+- Check report priority
+- Assign reports to staff
+- View reports on the map
+- Monitor bins and analytics
+
+### 3. Staff
+Login as **Staff** and:
+- View assigned waste collection tasks
+- Start the assigned task
+- Update the task status
+- Mark the waste collection as completed
+
+### 4. Citizen — Final Verification
+Login again as **Citizen** and:
+- Open **My Reports**
+- Check the updated report status
+- Verify that the completed report is reflected
+
+## 🔄 Report Status Flow
+
+```text
+Pending
    ↓
-Submit Waste Report
+Verified
    ↓
-Photo + Location + Description
+Assigned
    ↓
-Priority Calculation
-   ↓
-Admin Verification
-   ↓
-Staff Assignment
-   ↓
-Route Optimization
-   ↓
-Waste Collection
-   ↓
-Status Update
+In Progress
    ↓
 Completed
-Installation
+
+###Installation
 1. Clone the Repository
 git clone https://github.com/KaviyaRaji11/smart-waste-management-system.git
 cd smart-waste-management-system
