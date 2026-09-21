@@ -1,6 +1,30 @@
 const Report = require("../models/Report");
 const { calculatePriority } = require("../utils/priority");
+const cloudinary = require("cloudinary").v2;
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+const uploadToCloudinary = (buffer) => {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        folder: "smart-waste-reports",
+        resource_type: "image",
+      },
+      (error, result) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(result);
+        }
+      }
+    );
 
+    stream.end(buffer);
+  });
+};
 // ==========================================
 // CREATE REPORT - CITIZEN
 // ==========================================
@@ -36,14 +60,17 @@ exports.createReport = async (req, res) => {
     // PHOTO UPLOAD
     // ==========================================
 
-    const imageUrl = req.file
-      ? `/uploads/${req.file.filename}`
-      : "";
+    let imageUrl = "";
 
-    console.log("=================================");
-    console.log("Uploaded file:", req.file);
-    console.log("Image URL:", imageUrl);
-    console.log("=================================");
+if (req.file) {
+  const result = await uploadToCloudinary(req.file.buffer);
+  imageUrl = result.secure_url;
+}
+
+console.log("=================================");
+console.log("Uploaded file:", req.file ? req.file.originalname : "No image");
+console.log("Image URL:", imageUrl);
+console.log("=================================");
 
     // ==========================================
     // CREATE REPORT
